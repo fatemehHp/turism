@@ -8,9 +8,9 @@ import PageNotFound from "./pages/PageNotFound";
 import LoginPage from "./pages/LoginPage";
 import AppLayout from "./pages/AppLayout";
 import Cities from "./component/Cities";
-import Countries from "./component/CountriesItems";
 import CountriesList from "./component/CountriesList";
 import CityDetail from "./component/CityDetail";
+import Form from "./component/Form";
 // Base url
 const BASE_URL = "http://localhost:3000";
 
@@ -60,6 +60,7 @@ const App = () => {
           <Route path="cities/:id" element={<CityDetail />} />
           <Route path="cities/:cityID" element={<CityDetail />} />
           <Route path="countries" element={<CountriesList cities={cities} />} />
+          <Route path="form" element={<Form />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
