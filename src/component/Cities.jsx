@@ -1,6 +1,10 @@
 import Loading from "./Loading";
 import CityList from "./CityList";
-const Cities = ({ cities, isloading }) => {
+import { useCityContext } from "../context/CitiesContext";
+
+const Cities = () => {
+  const { cities, isloading } = useCityContext();
+
   return (
     <div className="p-6 md:p-10 bg-white/80 backdrop-blur-md rounded-xl shadow-xl">
       <h2 className="text-3xl font-bold mb-6 text-center text-blue-800">

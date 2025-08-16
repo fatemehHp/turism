@@ -1,7 +1,10 @@
 import React from "react";
 import CountriesItems from "./CountriesItems";
+import { useCityContext } from "../context/CitiesContext";
 
-const CountriesList = ({ cities }) => {
+const CountriesList = () => {
+  const { cities } = useCityContext();
+
   const countries = cities.reduce((newArray, current) => {
     if (!newArray.includes(current.country)) {
       // اگر کشور توی لیست نبود، اضافه کن
