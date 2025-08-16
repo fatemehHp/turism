@@ -6,6 +6,7 @@ const CityContext = createContext();
 const CitiesContext = ({ children }) => {
   const [cities, setCities] = useState([]);
   const [isloading, setIsLoading] = useState(false);
+  const [currentCity, setCurrentCity] = useState([]);
 
   // useState
   useEffect(function () {
@@ -29,9 +30,37 @@ const CitiesContext = ({ children }) => {
 
     getData();
   }, []);
+  // Get Current  City
+  async function getCurrentCities(id) {
+    console.log(id);
+    try {
+      setIsLoading(true);
+      const response = await fetch(`${BASE_URL}/cities/${id}`);
+      if (!response.ok) {
+        throw new Error("خطا در دریافت اطلاعات از سرور");
+      }
+      const data = await response.json();
+      console.log(data);
+      setCurrentCity(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("خطایی رخ داد:", error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
-    <CityContext.Provider value={{ cities, setCities, isloading }}>
+    <CityContext.Provider
+      value={{
+        cities,
+        setCities,
+        isloading,
+        getCurrentCities,
+        setCurrentCity,
+        currentCity,
+      }}
+    >
       {children}
     </CityContext.Provider>
   );

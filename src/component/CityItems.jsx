@@ -6,12 +6,9 @@ const CityItems = ({ item }) => {
     <Link to={`${item.id}?lat=${item.position.lat}&lng=${item.position.lng}`}>
       <li className="flex  justify-between cursor-pointer bg-gradient-to-r from-blue-100 to-blue-50 text-blue-900 p-4 rounded-lg shadow-md hover:scale-[1.03] hover:shadow-lg transition-all">
         <div className="flex items-center gap-3">
-          <span className="text-lg font-semibold">
-            {item.cityName}, {item.country}
-          </span>
+          <span className="text-lg font-semibold">{item.cityName}</span>
         </div>
 
-        <p className="text-sm text-blue-800">📝 {item.notes}</p>
         <p className="text-sm text-blue-800 italic">
           🗓️ {new Date(item.date).toLocaleDateString()}
         </p>
